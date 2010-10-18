@@ -3,11 +3,11 @@
 #  Spanish verbs conjugation library. Based on Pythoñol (http://pythonol.sourceforge.net)
 #
 #  This software is distributed  free-of-charge and open source 
-#  under the terms of the Pythoñol Free Education Initiative License.
+#  under the terms of the Free Education Initiative License.
 #  
 #  You should have received a copy  of this license with your copy of    
 #  this software. If you did not, you may get a copy of the          
-#  license at: http://pythonol.sourceforge.net
+#  license at: http://github.com/voldmar/conjugation/blob/master/LICENSE
 
 from collections import defaultdict
 
