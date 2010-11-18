@@ -153,7 +153,6 @@ def is_reflexive(full_word):
 
 def conjugate(full_word):
     full_word = full_word.lower().strip()
-    print full_word
     if not is_verb(full_word):
         raise ValueError(u'%s is not proper spanish verb' % full_word)
 
@@ -174,6 +173,7 @@ def conjugate(full_word):
             _root = root[:-1]
             conjugations.update((type, _root + ending) for type, ending in zar_endings.items())
         if base.endswith(u'gar'):
+            _root = root[:-1]
             conjugations.update((type, _root + ending) for type, ending in gar_endings.items())
         if base.endswith('car'):
             _root = root[:-1]
