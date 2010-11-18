@@ -395,5 +395,3 @@ function conjugate(full_word) {
     return conjugations;
 }
 
-console.log(conjugate("irse"));
-
