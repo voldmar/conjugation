@@ -12,6 +12,12 @@
 from collections import defaultdict
 from os import path
 
+
+class Irregular(unicode):
+    def __init__(self, base):
+        super(Irregular, self).__init__(base)
+        setattr(self, 'irregular', True)
+
 irregular_verbs = {}
 reverse_irregular_verbs = defaultdict(list)
 
@@ -152,6 +158,7 @@ def get_base(full_word):
 def is_reflexive(full_word):
     return full_word.endswith(u'se')
 
+
 def conjugate(full_word, secondary=False):
     full_word = full_word.lower().strip()
     if not is_verb(full_word):
@@ -170,18 +177,16 @@ def conjugate(full_word, secondary=False):
 
     if base.endswith(u'ar') or base.endswith(u'ár'):
         conjugations.update((type, root + ending) for type, ending in ar_endings.items())
+        _root = root[:-1]
         if base.endswith(u'zar'):
-            _root = root[:-1]
-            conjugations.update((type, _root + ending) for type, ending in zar_endings.items())
+            conjugations.update((type, Irregular(_root + ending)) for type, ending in zar_endings.items())
         if base.endswith(u'gar'):
-            _root = root[:-1]
-            conjugations.update((type, _root + ending) for type, ending in gar_endings.items())
+            conjugations.update((type, Irregular(_root + ending)) for type, ending in gar_endings.items())
         if base.endswith('car'):
-            _root = root[:-1]
-            conjugations.update((type, _root + ending) for type, ending in car_endings.items())
+            conjugations.update((type, Irregular(_root + ending)) for type, ending in car_endings.items())
 
     if base in irregular_verbs:
-        conjugations.update(irregular_verbs[base])
+        conjugations.update((type, Irregular(tense)) for type, tense in irregular_verbs[base].items())
 
     if reflexive:
         for type, form in conjugations.items():
