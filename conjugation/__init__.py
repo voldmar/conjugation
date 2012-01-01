@@ -221,8 +221,17 @@ def conjugate(full_word, secondary=False):
     if secondary:
         conjugations.update(secondary_conjugations(base, reflexive))
 
-    conjugations[u'1imp'] = u''
-    conjugations[u'1impn'] = u''
+    # negative imperatives:
+    if u'2pres' in conjugations:
+        conjugations[u'2impn'] = u'no ' + conjugations[u'2pres']
+    if u'3pres' in conjugations:
+        conjugations[u'3impn'] = u'no ' + conjugations[u'3pres']
+    if u'4pres' in conjugations:
+        conjugations[u'4impn'] = u'no ' + conjugations[u'4pres']
+    if u'5pres' in conjugations:
+        conjugations[u'5impn'] = u'no ' + conjugations[u'5pres']
+    if u'6pres' in conjugations:
+        conjugations[u'6impn'] = u'no ' + conjugations[u'6pres']
 
     return conjugations
 
@@ -344,18 +353,6 @@ def secondary_conjugations(base, reflexive):
         conjugations[u'4presps'] = rdict[u'4'] + u'hayamos ' + conjugations[u'participio']
         conjugations[u'5presps'] = rdict[u'5'] + u'hayáis ' + conjugations[u'participio']
         conjugations[u'6presps'] = rdict[u'6'] + u'hayan ' + conjugations[u'participio']
-
-    # negative imperatives:
-    if u'2pres' in conjugations:
-        conjugations[u'2impn'] = u'no ' + conjugations[u'2pres']
-    if u'3pres' in conjugations:
-        conjugations[u'3impn'] = u'no ' + conjugations[u'3pres']
-    if u'4pres' in conjugations:
-        conjugations[u'4impn'] = u'no ' + conjugations[u'4pres']
-    if u'5pres' in conjugations:
-        conjugations[u'5impn'] = u'no ' + conjugations[u'5pres']
-    if u'6pres' in conjugations:
-        conjugations[u'6impn'] = u'no ' + conjugations[u'6pres']
 
     return conjugations
 
