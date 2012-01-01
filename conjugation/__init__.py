@@ -152,7 +152,7 @@ def get_base(full_word):
 def is_reflexive(full_word):
     return full_word.endswith(u'se')
 
-def conjugate(full_word):
+def conjugate(full_word, secondary=False):
     full_word = full_word.lower().strip()
     if not is_verb(full_word):
         raise ValueError(u'%s is not proper spanish verb' % full_word)
@@ -213,7 +213,8 @@ def conjugate(full_word):
                 else:
                     conjugations[type] = u'se ' + conjugations[type]
 
-    conjugations.update(secondary_conjugations(base, reflexive))
+    if secondary:
+        conjugations.update(secondary_conjugations(base, reflexive))
 
     conjugations[u'1imp'] = u''
     conjugations[u'1impn'] = u''

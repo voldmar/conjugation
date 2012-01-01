@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='conjugation',
-      version='1.0',
+      version='1.0.1',
       description='Spanish verb conjugation library',
       author='Vladimir Epifanov',
       author_email='voldmar@voldmar.ru',
