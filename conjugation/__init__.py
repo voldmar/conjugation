@@ -10,12 +10,13 @@
 #  license at: http://github.com/voldmar/conjugation/blob/master/LICENSE
 
 from collections import defaultdict
+from os import path
 
 irregular_verbs = {}
 reverse_irregular_verbs = defaultdict(list)
 
 # Irregular verbs forms loading
-with open('irregular_verbs.txt') as verbs_file:
+with open(path.join(path.dirname(__file__), 'irregular_verbs.txt')) as verbs_file:
     for line in verbs_file:
         if ':' not in line:
             continue
