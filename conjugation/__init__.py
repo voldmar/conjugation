@@ -137,10 +137,10 @@ car_endings={
 }
 
 gar_endings={
-    u'1pas': u'ué',
-    u'1pres': u'ue', u'2pres': u'ues', u'3pres': u'ue',
-    u'4pres': u'uemos', u'5pres': u'uéis', u'6pres': u'uen',
-    u'3imp': u'ue', u'4imp': u'uemos', u'6imp': u'uen',
+    u'1pas': u'gué',
+    u'1pres': u'gue', u'2pres': u'ues', u'3pres': u'gue',
+    u'4pres': u'guemos', u'5pres': u'guéis', u'6pres': u'guen',
+    u'3imp': u'gue', u'4imp': u'guemos', u'6imp': u'guen',
 }
 
 def is_verb(full_word):
